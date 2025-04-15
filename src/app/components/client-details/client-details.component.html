@@ -1,0 +1,15 @@
+<div class="m-5">
+    <h2>{{client?.name}} Details</h2>
+    <div><span>id: </span>{{client?.id}}</div>
+    <hr/>
+    <dl class="row">
+        <dt class="col-sm-2">Name:</dt>
+        <dd class="col-sm-10">{{client?.name}}</dd>
+        <dt class="col-sm-2">Phone:</dt>
+        <dd class="col-sm-10">{{client?.phone}}</dd>
+        <dt class="col-sm-2">Tax number:</dt>
+        <dd class="col-sm-10">{{client?.taxNumber}}</dd>
+    </dl>
+    <hr/>
+    <button type="button" class="btn btn-dark" (click)="goBack()">go back</button>
+</div>
