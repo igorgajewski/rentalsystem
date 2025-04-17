@@ -32,7 +32,7 @@
                       Actions
                     </button>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" routerLink="/clients/{{employee.id}}">Edit</a></li>
+                      <li><a class="dropdown-item" routerLink="/employees/{{employee.id}}">Edit</a></li>
                       <li><a class="dropdown-item" (click)="delete(employee)">Delete</a></li>
                     </ul>
                   </div></td>
@@ -40,6 +40,6 @@
         </tbody>
       </table>
       <div>
-        <button type="button" class="btn btn-dark m-1" routerLink="/clients/new">add new</button>
+        <button type="button" class="btn btn-dark m-1" routerLink="/employees/new">add new</button>
       </div>
 </div>

@@ -2,3 +2,21 @@
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+.my-calendar-panel {
+    background-color: #aabda9;
+    .mat-calendar {
+      background-color: #a9c2a8;
+      color: #333;
+    }
+    .mat-calendar-header {
+      background: #1f2225;      // override header background
+      color: white;             // header text
+    }
+    .mat-calendar-body-cell.mat-calendar-body-active {
+      background: #4d40ff;       // active day
+      color: white;
+    }
+  }

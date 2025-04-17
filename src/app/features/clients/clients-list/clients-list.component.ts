@@ -8,10 +8,10 @@ import { finalize } from 'rxjs';
 @Component({
   selector: 'app-clients',
   imports: [CommonModule, RouterModule],
-  templateUrl: './clients.component.html',
-  styleUrl: './clients.component.scss'
+  templateUrl: './clients-list.component.html',
+  styleUrl: './clients-list.component.scss'
 })
-export class ClientsComponent {
+export class ClientsListComponent {
   clients: Client[] = [];
   loading = false;
   
