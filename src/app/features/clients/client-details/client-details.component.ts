@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Client } from '../../models/client';
-import { ApiService } from '../../services/api.service';
 import { Location } from '@angular/common';
 import { FormsModule } from '@angular/forms'
+import { Client } from '../../../shared/models/client';
+import { ApiService } from '../../../core/services/api.service';
 
 @Component({
   selector: 'app-client-details',

@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
-import { Client } from '../../models/client';
 import { FormsModule } from '@angular/forms';
 import { Location } from '@angular/common';
-import { ApiService } from '../../services/api.service';
 import { CommonModule } from '@angular/common';
+import { Client } from '../../../shared/models/client';
+import { ApiService } from '../../../core/services/api.service';
 
 @Component({
   selector: 'app-client-new',

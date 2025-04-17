@@ -1,11 +1,11 @@
 import { Routes } from '@angular/router';
-import { HomeComponent } from './components/home/home.component';
-import { ClientsComponent } from './components/clients/clients.component';
-import { EmployeesComponent } from './components/employees/employees.component';
-import { EquipmentComponent } from './components/equipment/equipment.component';
-import { RentalsComponent } from './components/rentals/rentals.component';
-import { ClientDetailsComponent } from './components/client-details/client-details.component';
-import { ClientNewComponent } from './components/client-new/client-new.component';
+import { HomeComponent } from './features/home/home/home.component';
+import { ClientsComponent } from './features/clients/clients/clients.component';
+import { EmployeesComponent } from './features/employees/employees/employees.component';
+import { EquipmentComponent } from './features/equipment/equipment/equipment.component';
+import { RentalsComponent } from './features/rentals/rentals/rentals.component';
+import { ClientNewComponent } from './features/clients/client-new/client-new.component';
+import { ClientDetailsComponent } from './features/clients/client-details/client-details.component';
 
 export const routes: Routes = [
     {

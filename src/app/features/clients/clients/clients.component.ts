@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Client } from '../../models/client';
-import { ApiService } from '../../services/api.service';
+import { Client } from '../../../shared/models/client';
+import { ApiService } from '../../../core/services/api.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { finalize } from 'rxjs';

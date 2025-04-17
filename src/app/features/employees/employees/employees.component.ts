@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { Employee } from '../../models/employee';
-import { ApiService } from '../../services/api.service';
+import { Employee } from '../../../shared/models/employee';
+import { ApiService } from '../../../core/services/api.service';
 import { CommonModule } from '@angular/common';
 import { finalize } from 'rxjs';
-import { Role } from '../../models/role';
+import { Role } from '../../../shared/models/role';
 
 @Component({
   selector: 'app-employees',
