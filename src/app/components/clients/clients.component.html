@@ -1,36 +1,43 @@
 <div class="m-5">
-    <div>
-        <h4>Clients</h4>
+  <div *ngIf="loading" class="d-flex justify-content-center my-5">
+    <div class="spinner-border" role="status">
+      <span class="visually-hidden">Loading...</span>
     </div>
-    <table class="table">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Phone</th>
-            <th scope="col">Tax number</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-            <tr *ngFor="let client of clients">
-                <td scope="row">{{client.id}}</td>
-                <td>{{client.name}}</td>
-                <td>{{client.phone}}</td>
-                <td>{{client.taxNumber}}</td>
-                <td><div class="dropdown">
-                    <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                      Actions
-                    </button>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" routerLink="/clients/{{client.id}}">Edit</a></li>
-                      <li><a class="dropdown-item" (click)="delete(client)">Delete</a></li>
-                    </ul>
-                  </div></td>
-            </tr>
-        </tbody>
-      </table>
-      <div>
-        <button type="button" class="btn btn-dark m-1" routerLink="/clients/new">add new</button>
-      </div>
+  </div>
+  <div>
+    <h4>Clients</h4>
+  </div>
+  <table class="table table-striped" *ngIf="!loading">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Phone</th>
+        <th scope="col">Tax number</th>
+        <th scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let client of clients">
+        <td scope="row">{{client.id}}</td>
+        <td>{{client.name}}</td>
+        <td>{{client.phone}}</td>
+        <td>{{client.taxNumber}}</td>
+        <td>
+          <div class="dropdown">
+            <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+              Actions
+            </button>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" routerLink="/clients/{{client.id}}">Edit</a></li>
+              <li><a class="dropdown-item" (click)="delete(client)">Delete</a></li>
+            </ul>
+          </div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div>
+    <button type="button" class="btn btn-dark m-1" routerLink="/clients/new">add new</button>
+  </div>
 </div>

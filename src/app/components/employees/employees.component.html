@@ -1,1 +1,45 @@
-<p>employees works!</p>
+<div class="m-5">
+    <div *ngIf="loading" class="d-flex justify-content-center my-5">
+        <div class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
+      </div>
+    <div>
+        <h4>Employees</h4>
+    </div>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Address</th>
+            <th scope="col">Employment Date</th>
+            <th scope="col">Phone</th>
+            <th scope="col">Role</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let employee of employees">
+                <td scope="row">{{employee.id}}</td>
+                <td>{{employee.name}}</td>
+                <td>{{employee.address}}</td>
+                <td>{{ employee.employmentDate | date:'yyyy-MM-dd' }}</td>
+                <td>{{employee.phone}}</td>
+                <td>{{Role[employee.role]}}</td>
+                <td><div class="dropdown">
+                    <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                      Actions
+                    </button>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" routerLink="/clients/{{employee.id}}">Edit</a></li>
+                      <li><a class="dropdown-item" (click)="delete(employee)">Delete</a></li>
+                    </ul>
+                  </div></td>
+            </tr>
+        </tbody>
+      </table>
+      <div>
+        <button type="button" class="btn btn-dark m-1" routerLink="/clients/new">add new</button>
+      </div>
+</div>

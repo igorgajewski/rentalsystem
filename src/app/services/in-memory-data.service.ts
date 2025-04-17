@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Client } from '../models/client';
+import { Role } from '../models/role';
+import { Employee } from '../models/employee';
 
 @Injectable({
   providedIn: 'root',
@@ -15,17 +17,55 @@ export class InMemoryDataService implements InMemoryDbService {
       { id: 5, name: 'John Rambo', phone: 123456789, taxNumber: 445566 },
       { id: 6, name: 'Kim Possible', phone: 123456789, taxNumber: 445566 }
     ];
-    return {clients};
+
+    const employees: Employee[] = [
+      {
+        id: 1,
+        name: 'Alice Johnson',
+        address: '123 Main St',
+        employmentDate: new Date('2021-06-15'),
+        phone: '555-123-4567',
+        role: Role.Cashier
+      },
+      {
+        id: 2,
+        name: 'Bob Smith',
+        address: '456 Elm Ave',
+        employmentDate: new Date('2020-02-20'),
+        phone: '555-987-6543',
+        role: Role.Manager
+      },
+      {
+        id: 3,
+        name: 'Carol Williams',
+        address: '789 Oak Blvd',
+        employmentDate: new Date('2019-11-01'),
+        phone: '555-222-3333',
+        role: Role.Cashier
+      },
+      {
+        id: 4,
+        name: 'David Brown',
+        address: '321 Pine Rd',
+        employmentDate: new Date('2018-08-30'),
+        phone: '555-444-5555',
+        role: Role.Manager
+      },
+      {
+        id: 5,
+        name: 'Eva Green',
+        address: '654 Maple Ln',
+        employmentDate: new Date('2022-01-10'),
+        phone: '555-666-7777',
+        role: Role.Cashier
+      }
+    ];
+    return {clients, employees };
   }
 
-  // Overrides the genId method to ensure that a client always has an id.
-  // If the clients array is empty,
-  // the method below returns the initial number (11).
-  // if the clients array is not empty, the method below returns the highest
-  // client id + 1.
-
-  // yes i copied it from angular docs
-  genId(clients: Client[]): number {
-    return clients.length > 0 ? Math.max(...clients.map(client => client.id)) + 1 : 1;
+  genId<T extends { id: number }>(collection: T[]): number {
+    return collection.length > 0
+      ? Math.max(...collection.map(item => item.id)) + 1
+      : 1;
   }
 }

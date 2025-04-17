@@ -3,6 +3,7 @@ import { Client } from '../../models/client';
 import { ApiService } from '../../services/api.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { finalize } from 'rxjs';
 
 @Component({
   selector: 'app-clients',
@@ -12,6 +13,7 @@ import { RouterModule } from '@angular/router';
 })
 export class ClientsComponent {
   clients: Client[] = [];
+  loading = false;
   
   constructor(private api: ApiService) {}
 
@@ -19,7 +21,12 @@ export class ClientsComponent {
     this.getClients();
   }
   getClients() {
-    this.api.getClients().subscribe(clients => this.clients = clients);
+    this.loading = true;
+    this.api.getClients()
+    .pipe(
+      finalize(() => this.loading = false)
+    )
+    .subscribe(clients => this.clients = clients);
   }
   delete(client: Client): void {
     this.clients = this.clients.filter(c => c !== client);
