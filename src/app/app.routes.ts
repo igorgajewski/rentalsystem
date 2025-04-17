@@ -5,6 +5,7 @@ import { EmployeesComponent } from './components/employees/employees.component';
 import { EquipmentComponent } from './components/equipment/equipment.component';
 import { RentalsComponent } from './components/rentals/rentals.component';
 import { ClientDetailsComponent } from './components/client-details/client-details.component';
+import { ClientNewComponent } from './components/client-new/client-new.component';
 
 export const routes: Routes = [
     {
@@ -12,6 +13,9 @@ export const routes: Routes = [
     },
     {
         path: 'clients', component: ClientsComponent
+    },
+    {
+        path: 'clients/new', component: ClientNewComponent
     },
     {
         path: 'clients/:id', component: ClientDetailsComponent

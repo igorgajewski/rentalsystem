@@ -19,6 +19,10 @@ export class ClientsComponent {
     this.getClients();
   }
   getClients() {
-    this.api.getClients().subscribe(clients => this.clients = clients)
+    this.api.getClients().subscribe(clients => this.clients = clients);
+  }
+  delete(client: Client): void {
+    this.clients = this.clients.filter(c => c !== client);
+    this.api.deleteClient(client.id).subscribe();
   }
 }

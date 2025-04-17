@@ -3,15 +3,16 @@ import { ActivatedRoute } from '@angular/router';
 import { Client } from '../../models/client';
 import { ApiService } from '../../services/api.service';
 import { Location } from '@angular/common';
+import { FormsModule } from '@angular/forms'
 
 @Component({
   selector: 'app-client-details',
-  imports: [],
+  imports: [FormsModule],
   templateUrl: './client-details.component.html',
   styleUrl: './client-details.component.scss'
 })
 export class ClientDetailsComponent {
-  client: Client | undefined;
+  client!: Client;
   constructor(private route: ActivatedRoute, private api: ApiService, private location: Location) { }
 
   ngOnInit(): void {
@@ -23,5 +24,10 @@ export class ClientDetailsComponent {
   }
   goBack(): void {
     this.location.back();
+  }
+  save(): void {
+    if (this.client){
+      this.api.updateClient(this.client).subscribe(() => this.goBack());
+    }
   }
 }

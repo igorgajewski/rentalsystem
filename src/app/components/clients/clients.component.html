@@ -23,12 +23,14 @@
                       Actions
                     </button>
                     <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" routerLink="/clients/{{client.id}}">Details</a></li>
-                      <li><a class="dropdown-item" href="#">Edit</a></li>
-                      <li><a class="dropdown-item" href="#">Delete</a></li>
+                      <li><a class="dropdown-item" routerLink="/clients/{{client.id}}">Edit</a></li>
+                      <li><a class="dropdown-item" (click)="delete(client)">Delete</a></li>
                     </ul>
                   </div></td>
             </tr>
         </tbody>
       </table>
+      <div>
+        <button type="button" class="btn btn-dark m-1" routerLink="/clients/new">add new</button>
+      </div>
 </div>
