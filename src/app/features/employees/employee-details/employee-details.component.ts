@@ -1,13 +1,14 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Employee } from '../../../shared/models/employee';
 import { CommonModule, Location } from '@angular/common';
-import { ApiService } from '../../../core/services/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule }     from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
 import { MatNativeDateModule } from '@angular/material/core';
+
+import { Employee, Role, validateEmployee } from '../../../shared/models/employee';
+import { ApiService } from '../../../core/services/api.service';
 
 @Component({
   selector: 'app-employee-details',
@@ -17,9 +18,12 @@ import { MatNativeDateModule } from '@angular/material/core';
 })
 export class EmployeeDetailsComponent {
   employee!: Employee;
-  employmentDateString = '';
+  public Role = Role;
+
+  public roleOptions = Object.keys(Role).filter(k => isNaN(Number(k))) as Array<keyof typeof Role>;
 
   constructor(private route: ActivatedRoute, private api: ApiService, private location: Location) { }
+
   ngOnInit(): void {
     this.getEmployee();
   }
@@ -32,6 +36,7 @@ export class EmployeeDetailsComponent {
   }
   save(): void {
     if (this.employee) {
+      validateEmployee(this.employee)
       this.api.updateEmployee(this.employee).subscribe(() => this.goBack());
     }
   }

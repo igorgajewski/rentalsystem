@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import { CommonModule, Location } from '@angular/common';
 import { FormsModule } from '@angular/forms'
 import { Client } from '../../../shared/models/client';
 import { ApiService } from '../../../core/services/api.service';
 
 @Component({
   selector: 'app-client-details',
-  imports: [FormsModule],
+  imports: [FormsModule, CommonModule],
   templateUrl: './client-details.component.html',
   styleUrl: './client-details.component.scss'
 })
@@ -26,7 +26,7 @@ export class ClientDetailsComponent {
     this.location.back();
   }
   save(): void {
-    if (this.client){
+    if (this.client) {
       this.api.updateClient(this.client).subscribe(() => this.goBack());
     }
   }

@@ -1,26 +1,23 @@
-import { Role } from "./role";
+export enum Role{
+    Cashier,
+    Manager
+}
 
-export class Employee {
-    public id: number;
-    public name: string;
-    public address: string;
-    public employmentDate: Date;
-    public phone: string;
-    public role: Role;
-
-    constructor(
-        id: number,
-        name: string,
-        address: string,
-        employmentDate: Date,
-        phone: string,
-        role: Role
-    ) {
-        this.id = id;
-        this.name = name,
-        this.address = address,
-        this.employmentDate = employmentDate,
-        this.phone = phone,
-        this.role = role
+export interface Employee {
+    id: number;
+    name: string;
+    address: string;
+    employmentDate: Date;
+    phone:string;
+    birthDate?: Date;
+    role: Role;
+    managerId?: number;
+}
+export function validateEmployee(employee: Employee): void {
+    if (employee.role === Role.Cashier && (employee.managerId === undefined)){
+        throw new Error('Cashier must have a managerId');
+    }
+    if (employee.role === Role.Manager && employee.managerId !== undefined){
+        throw new Error('Manager cannot have a managerId');
     }
 }

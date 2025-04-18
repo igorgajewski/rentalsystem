@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
-import { Client } from '../../shared/models/client';
-import { Role } from '../../shared/models/role';
-import { Employee } from '../../shared/models/employee';
+import { Employee, Role } from '../../shared/models/employee';
 
 @Injectable({
   providedIn: 'root',
@@ -10,12 +8,12 @@ import { Employee } from '../../shared/models/employee';
 export class InMemoryDataService implements InMemoryDbService {
   createDb() {
     const clients = [
-      { id: 1, name: 'Mark Twain', phone: 123456789, taxNumber: 445566 },
-      { id: 2, name: 'George Lucas', phone: 123456789, taxNumber: 445566 },
-      { id: 3, name: 'Linus Torvalds', phone: 123456789, taxNumber: 445566 },
-      { id: 4, name: 'Harry Potter', phone: 123456789, taxNumber: 445566 },
-      { id: 5, name: 'John Rambo', phone: 123456789, taxNumber: 445566 },
-      { id: 6, name: 'Kim Possible', phone: 123456789, taxNumber: 445566 }
+      { id: 1, name: 'Mark Twain', phone: '123-456-789', taxNumber: '123' },
+      { id: 2, name: 'George Lucas', phone: '123-456-789', taxNumber: '456' },
+      { id: 3, name: 'Linus Torvalds', phone: '123-456-789', taxNumber: '789' },
+      { id: 4, name: 'Harry Potter', phone: '123-456-789', taxNumber: '101112' },
+      { id: 5, name: 'John Rambo', phone: '123-456-789', taxNumber: '131415' },
+      { id: 6, name: 'Kim Possible', phone: '123-456-789', taxNumber: '161718' }
     ];
 
     const employees: Employee[] = [
@@ -24,7 +22,7 @@ export class InMemoryDataService implements InMemoryDbService {
         name: 'Alice Johnson',
         address: '123 Main St',
         employmentDate: new Date('2021-06-15'),
-        phone: '555-123-4567',
+        phone: '555-123-456',
         role: Role.Cashier
       },
       {
@@ -32,7 +30,8 @@ export class InMemoryDataService implements InMemoryDbService {
         name: 'Bob Smith',
         address: '456 Elm Ave',
         employmentDate: new Date('2020-02-20'),
-        phone: '555-987-6543',
+        phone: '555-987-654',
+        birthDate: new Date('1995-01-01'),
         role: Role.Manager
       },
       {
@@ -40,7 +39,7 @@ export class InMemoryDataService implements InMemoryDbService {
         name: 'Carol Williams',
         address: '789 Oak Blvd',
         employmentDate: new Date('2019-11-01'),
-        phone: '555-222-3333',
+        phone: '555-222-333',
         role: Role.Cashier
       },
       {
@@ -48,7 +47,7 @@ export class InMemoryDataService implements InMemoryDbService {
         name: 'David Brown',
         address: '321 Pine Rd',
         employmentDate: new Date('2018-08-30'),
-        phone: '555-444-5555',
+        phone: '555-444-555',
         role: Role.Manager
       },
       {
@@ -56,7 +55,7 @@ export class InMemoryDataService implements InMemoryDbService {
         name: 'Eva Green',
         address: '654 Maple Ln',
         employmentDate: new Date('2022-01-10'),
-        phone: '555-666-7777',
+        phone: '555-666-777',
         role: Role.Cashier
       }
     ];

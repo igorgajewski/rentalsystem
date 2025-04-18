@@ -1,40 +1,73 @@
-<div class="m-5">
+<form class="m-5" (ngSubmit)="save()" #employeeForm="ngForm" novalidate>
     <h2>{{employee.name}} Details</h2>
     <div><span>id: </span>{{employee.id}}</div>
     <hr/>
     <dl class="row">
         <dt class="col-sm-2">Name:</dt>
         <dd class="col-sm-10">
-            <input id="employee-name" [(ngModel)]="employee.name" />
+            <input id="employee-name" class="form-control" style="width:250px" name="name" [(ngModel)]="employee.name" required/>
         </dd>
         <dt class="col-sm-2">Address:</dt>
         <dd class="col-sm-10">
-            <input id="employee-address" [(ngModel)]="employee.address" />
+            <input id="employee-address" class="form-control" style="width:250px" name="address" [(ngModel)]="employee.address" required/>
         </dd>
         <dt class="col-sm-2">Employment date:</dt>
         <dd class="col-sm-10">
-            <mat-form-field appearance="fill">
+            <mat-form-field appearance="fill" style="width: 250px;">
               <input
                 matInput
-                [matDatepicker]="picker"
+                [matDatepicker]="employmentDatePicker"
                 name="employmentDate"
                 required
                 [(ngModel)]="employee.employmentDate"
               />
               <mat-datepicker-toggle
                 matSuffix
-                [for]="picker">
+                [for]="employmentDatePicker">
               </mat-datepicker-toggle>
-              <mat-datepicker #picker panelClass="my-calendar-panel"></mat-datepicker>
+              <mat-datepicker #employmentDatePicker panelClass="my-calendar-panel"></mat-datepicker>
             </mat-form-field>
           </dd>
         <dt class="col-sm-2">Phone:</dt>
         <dd class="col-sm-10">
-            <input id="employee-phone" [(ngModel)]="employee.phone" />
+            <input id="employee-phone" class="form-control" style="width:250px" name="phone" [(ngModel)]="employee.phone" required type="tel"
+            pattern="^\d{3}-\d{3}-\d{3}$" #phoneCtrl="ngModel" placeholder="123-456-789"/>
+            <div *ngIf="phoneCtrl.invalid && phoneCtrl.touched" class="text-danger">
+              <div *ngIf="phoneCtrl.errors?.['required']">
+                  Phone is required.
+              </div>
+              <div *ngIf="phoneCtrl.errors?.['pattern']">
+                  Phone must be in the format 123-456-789.
+              </div>
+          </div>
+        </dd>
+        <dt class="col-sm-2">Birth Date:</dt>
+        <dd class="col-sm-10">
+        <mat-form-field appearance="fill" style="width: 250px;">
+          <input
+            matInput
+            [matDatepicker]="birthDatePicker"
+            name="birthDate"
+            required
+            [(ngModel)]="employee.birthDate"
+          />
+          <mat-datepicker-toggle
+            matSuffix
+            
+            [for]="birthDatePicker">
+          </mat-datepicker-toggle>
+          <mat-datepicker #birthDatePicker panelClass="my-calendar-panel"></mat-datepicker>
+        </mat-form-field>
+      </dd>
+        <dt class="col-sm-2">Role:</dt>
+        <dd class="col-sm-10">
+          <select id="employee-role" class="form-select" style="width:250px" name="role" [(ngModel)]="employee.role" required>
+            <option *ngFor="let key of roleOptions" [ngValue]="Role[key]">{{key}}</option>
+          </select>
         </dd>
     </dl>
     <hr/>
     <button type="button" class="btn btn-dark m-1" (click)="goBack()">go back</button>
-    <button type="button" class="btn btn-dark m-1" (click)="save()">save</button>
+    <button type="submit" class="btn btn-dark m-1" [disabled]="employeeForm.invalid">save</button>
     <hr/>
-</div>
+  </form>
