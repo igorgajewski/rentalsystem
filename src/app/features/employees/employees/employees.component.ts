@@ -33,5 +33,11 @@ export class EmployeesComponent {
     this.employees = this.employees.filter(e => e !== employee);
     this.api.deleteEmployee(employee.id).subscribe();
   }
-
+  getManagerName(managerId?: number): string {
+    if (managerId === null){
+      return '-';
+    }
+    const manager = this.employees.find(e => e.id === managerId);
+    return manager ? manager.name : '-';
+  }
 }

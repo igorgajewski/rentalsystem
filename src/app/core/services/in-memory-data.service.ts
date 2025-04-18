@@ -23,7 +23,7 @@ export class InMemoryDataService implements InMemoryDbService {
         address: '123 Main St',
         employmentDate: new Date('2021-06-15'),
         phone: '555-123-456',
-        role: Role.Cashier
+        role: Role.Owner
       },
       {
         id: 2,
@@ -32,7 +32,8 @@ export class InMemoryDataService implements InMemoryDbService {
         employmentDate: new Date('2020-02-20'),
         phone: '555-987-654',
         birthDate: new Date('1995-01-01'),
-        role: Role.Manager
+        role: Role.Manager,
+        managerId: 1
       },
       {
         id: 3,
@@ -40,7 +41,8 @@ export class InMemoryDataService implements InMemoryDbService {
         address: '789 Oak Blvd',
         employmentDate: new Date('2019-11-01'),
         phone: '555-222-333',
-        role: Role.Cashier
+        role: Role.Cashier,
+        managerId: 2
       },
       {
         id: 4,
@@ -48,7 +50,9 @@ export class InMemoryDataService implements InMemoryDbService {
         address: '321 Pine Rd',
         employmentDate: new Date('2018-08-30'),
         phone: '555-444-555',
-        role: Role.Manager
+        birthDate: new Date('1994-01-01'),
+        role: Role.Cashier,
+        managerId: 2
       },
       {
         id: 5,
@@ -56,7 +60,8 @@ export class InMemoryDataService implements InMemoryDbService {
         address: '654 Maple Ln',
         employmentDate: new Date('2022-01-10'),
         phone: '555-666-777',
-        role: Role.Cashier
+        role: Role.Cashier,
+        managerId: 2
       }
     ];
     return {clients, employees };
