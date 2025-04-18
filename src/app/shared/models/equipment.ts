@@ -1,5 +1,5 @@
 export interface Equipment {
-    id: string; // Unique identifier for each equipment piece
+    id: number; // Unique identifier for each equipment piece
     name: string;
     producer: string;
     rentPerDay: number;

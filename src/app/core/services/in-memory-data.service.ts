@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { InMemoryDbService } from 'angular-in-memory-web-api';
 import { Employee, Role } from '../../shared/models/employee';
+import { Equipment } from '../../shared/models/equipment';
 
 @Injectable({
   providedIn: 'root',
@@ -62,6 +63,21 @@ export class InMemoryDataService implements InMemoryDbService {
         phone: '555-666-777',
         role: Role.Cashier,
         managerId: 2
+      }
+    ];
+    const equipments: Equipment[] = [
+      {
+        id:1,
+        name: 'Mountain Bike',
+        producer: 'BikeCo',
+        rentPerDay: 15,
+        types: ['mountain'],
+        usageType: 'professional',
+        quantity: 10,
+        repairHistory: [
+          { date: '2023-01-15', description: 'Brake replacement', price: 50 },
+          { date: '2023-03-20', description: 'Tire repair', price: 20 }
+        ]
       }
     ];
     return {clients, employees };
