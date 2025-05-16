@@ -10,11 +10,6 @@ export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
-    provideHttpClient(),
-  importProvidersFrom(
-    HttpClientInMemoryWebApiModule.forRoot(InMemoryDataService,{
-      dataEncapsulation: false,
-      passThruUnknownUrl: true
-    })
-  )]
+    provideHttpClient()
+  ]
 };

@@ -8,8 +8,9 @@ import { Employee } from '../../shared/models/employee';
   providedIn: 'root'
 })
 export class ApiService {
-  private clientsUrl = 'api/clients'
-  private employeesUrl = 'api/employees'
+  private baseUrl = 'https://localhost:7140/api'
+  private clientsUrl = `${this.baseUrl}/clients`;
+private employeesUrl = `${this.baseUrl}/employees`;
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
